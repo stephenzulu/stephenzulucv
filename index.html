@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="img/logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephen Zulu — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens — light theme ── */
+:root {
+  --bg:        #f5f6f8;
+  --surface:   #ffffff;
+  --surface2:  #f0f2f5;
+  --border:    #e0e3ea;
+  --accent:    #1a9e68;
+  --accent2:   #2563b8;
+  --orange:    #b86b0a;
+  --text1:     #111827;
+  --text2:     #4b5563;
+  --text3:     #9ca3af;
+  --mono:      'Space Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+  --sidebar-w: 240px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text1);
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+
+/* ══════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════ */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.profile-block {
+  padding: 28px 20px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  border: 3px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 4px;
+}
+
+.hero-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 3px solid var(--border);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  flex-shrink: 0;
+}
+
+.hero-text { flex: 1; }
+
+.profile-name {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text1);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.profile-role {
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 3px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.profile-loc {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot-online {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(26,158,104,0.35); }
+  50%      { opacity:.7; box-shadow: 0 0 0 4px rgba(26,158,104,0); }
+}
+
+.contact-block {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text2);
+  word-break: break-all;
+}
+
+.contact-item .ci-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  padding-top: 1px;
+  min-width: 36px;
+}
+
+nav {
+  padding: 12px 0;
+  flex: 1;
+}
+
+.nav-section-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 10px 20px 4px;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  font-size: 12px;
+  color: var(--text2);
+  text-decoration: none;
+  transition: color .15s, background .15s, border-left .15s;
+  border-left: 2px solid transparent;
+}
+
+nav a:hover {
+  color: var(--text1);
+  background: rgba(61,207,142,0.05);
+  border-left-color: var(--accent);
+}
+
+nav a .nav-icon { font-size: 13px; opacity: .7; }
+
+.sidebar-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════════════════
+   MAIN
+══════════════════════════════════════ */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 0 32px 80px 32px;
+  max-width: 100%;
+}
+
+/* ── Section ── */
+.section {
+  padding-top: 48px;
+  animation: fadeUp .5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-icon {
+  font-size: 15px;
+}
+
+.section-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Hero ── */
+#hero {
+  padding-top: 52px;
+  padding-bottom: 8px;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero-name {
+  font-family: var(--mono);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--text1);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hero-name span { color: var(--accent); }
+
+.hero-title {
+  font-size: 15px;
+  color: var(--text2);
+  margin-top: 6px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.hero-summary {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-top: 18px;
+  max-width: 600px;
+  border-left: 2px solid var(--accent);
+  padding-left: 16px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 18px;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  background: var(--surface);
+  letter-spacing: 0.04em;
+  transition: border-color .15s, color .15s;
+}
+
+.tag:hover { border-color: var(--accent); color: var(--accent); }
+.tag.hi { border-color: rgba(61,207,142,.35); color: var(--accent); background: rgba(61,207,142,.07); }
+
+/* ── Experience entries ── */
+.exp-list { display: flex; flex-direction: column; gap: 24px; }
+
+.exp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 20px;
+  position: relative;
+  transition: border-color .2s;
+}
+
+.exp-card:hover { border-color: rgba(61,207,142,.4); }
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 18px; bottom: 18px;
+  width: 2px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.exp-card:hover::before { opacity: 1; }
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.exp-role {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text1);
+  letter-spacing: 0.01em;
+}
+
+.exp-company {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent2);
+  margin-top: 2px;
+}
+
+.exp-period {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.exp-bullets {
+  margin-top: 12px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exp-bullets li {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.55;
+  padding-left: 14px;
+  position: relative;
+}
+
+.exp-bullets li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 10px;
+  top: 2px;
+}
+
+/* ── Education ── */
+.edu-list { display: flex; flex-direction: column; gap: 10px; }
+
+.edu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: border-color .2s;
+}
+
+.edu-row:hover { border-color: rgba(88,166,255,.35); }
+
+.edu-year {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent2);
+  flex-shrink: 0;
+  padding-top: 2px;
+  min-width: 38px;
+}
+
+.edu-degree {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text1);
+}
+
+.edu-inst {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 2px;
+}
+
+/* ── Skills grid ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.skill-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+  transition: border-color .2s;
+}
+
+.skill-group:hover { border-color: rgba(61,207,142,.3); }
+
+.skill-group-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 9px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.skill-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 2px 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text2);
+}
+
+/* ── Projects grid ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  transition: border-color .2s, transform .2s;
+  cursor: default;
+}
+
+.project-card:hover {
+  border-color: rgba(61,207,142,.4);
+  transform: translateY(-2px);
+}
+
+.project-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text1);
+  margin-bottom: 6px;
+}
+
+.project-year {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--orange);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.project-desc {
+  font-size: 11px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* ── References ── */
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.ref-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.ref-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text1);
+}
+
+.ref-role {
+  font-size: 11px;
+  color: var(--accent2);
+  margin-top: 2px;
+}
+
+.ref-org {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.ref-tel {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  margin-top: 8px;
+}
+
+/* ── Languages & Leadership ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.list-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.list-block-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.list-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.list-block li {
+  font-size: 12px;
+  color: var(--text2);
+  padding-left: 12px;
+  position: relative;
+}
+
+.list-block li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ── Print / responsive ── */
+@media (max-width: 700px) {
+  .sidebar { display: none; }
+  .main { padding: 24px 20px 60px; }
+  .two-col { grid-template-columns: 1fr; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .sidebar { display: none; }
+  .main { padding: 20px; max-width: 100%; }
+  .exp-card, .edu-row, .skill-group, .project-card, .ref-card, .list-block {
+    border: 1px solid #ccc; background: #fff;
+  }
+  :root { --text1:#000; --text2:#333; --text3:#666; --accent:#1a7a4a; --accent2:#1a5490; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ SIDEBAR ══════════════════ -->
+<aside class="sidebar">
+  <div class="profile-block">
+    <div class="avatar"><img src="img/logo.png" alt="Stephen Zulu" onerror="this.style.display='none'"></div>
+    <div class="profile-name">Stephen Zulu</div>
+    <div class="profile-role">DBA &amp; Backend Developer</div>
+    <div class="profile-loc">
+      <span class="dot-online"></span>
+      Lusaka, Zambia
+    </div>
+  </div>
+
+  <div class="contact-block">
+    <div class="contact-item">
+      <span class="ci-label">Tel</span>
+      <span>0973 297 566</span>
+    </div>
+    <div class="contact-item">
+      <span class="ci-label">Email</span>
+      <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94cee1f8e1e7e0f1e2f1faadd4f3f9f5fdf8baf7fbf9">[email&#160;protected]</a></span>
+    </div>
+    <div class="contact-item">
+      <span class="ci-label">ID</span>
+      <span>308469/10/1</span>
+    </div>
+    <div class="contact-item">
+      <span class="ci-label">P.O.</span>
+      <span>Box 50212, Lusaka</span>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-section-label">Navigate</div>
+    <a href="#summary">  <span class="nav-icon">◈</span> Summary</a>
+    <a href="#experience"><span class="nav-icon">◈</span> Experience</a>
+    <a href="#education"> <span class="nav-icon">◈</span> Education</a>
+    <a href="#skills">    <span class="nav-icon">◈</span> Skills</a>
+    <a href="#projects">  <span class="nav-icon">◈</span> Projects</a>
+    <a href="#leadership"><span class="nav-icon">◈</span> Leadership</a>
+    <a href="#references"><span class="nav-icon">◈</span> References</a>
+  </nav>
+
+  <div class="sidebar-footer">cv · stephen-zulu · 2025</div>
+</aside>
+
+<!-- ══════════════════ MAIN ══════════════════ -->
+<main class="main">
+
+  <!-- HERO -->
+  <section id="summary">
+    <div class="hero-top">
+      <img class="hero-photo" src="img/logo.png" alt="Stephen Zulu"
+           onerror="this.style.display='none'">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Curriculum Vitae</div>
+        <h1 class="hero-name">Stephen<br><span>Zulu</span></h1>
+        <div class="hero-title">System Analyst · DBA · Full-Stack Developer</div>
+      </div>
+    </div>
+    <p class="hero-summary">
+      A bright, ambitious and self-motivated Computer Scientist with a strong ICT background in Software Engineering, Database &amp; Server Management, and Networking. Quick learner, effective communicator, proven delivery across mobile, web, and enterprise systems.
+    </p>
+    </div><!-- /hero-text -->
+    <div class="tag-row">
+      <span class="tag hi">Java</span>
+      <span class="tag hi">Oracle</span>
+      <span class="tag hi">Vaadin</span>
+      <span class="tag hi">Python</span>
+      <span class="tag">Kotlin</span>
+      <span class="tag">C#</span>
+      <span class="tag">PHP</span>
+      <span class="tag">MySQL</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">MSSQL</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">HTML/CSS</span>
+      <span class="tag">WordPress</span>
+      <span class="tag">Adobe XD</span>
+      <span class="tag">Blender</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Work Experience</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">Database Administrator &amp; Backend Developer</div>
+            <div class="exp-company">Workers' Compensation Fund Control Board (WCFCB)</div>
+          </div>
+          <span class="exp-period">2023 — Present</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Development and maintenance of the main website and intranet web system.</li>
+          <li>Database replication monitoring and backup management across all corporate systems.</li>
+          <li>Technical support for PAS, Sun System, eWorkers, Dove Payroll &amp; HR.</li>
+          <li>Developed and tested APIs supporting mobile and web app functionality.</li>
+          <li>Trained staff on eWorkers benefits, revenue, payment modules and mobile apps.</li>
+          <li>Created holding screen videos for the eWorkers online payment launch.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">System Analyst — Applications</div>
+            <div class="exp-company">Workers' Compensation Fund Control Board (WCFCB)</div>
+          </div>
+          <span class="exp-period">2022 — 2023</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Analysis and resolution of system requests across PAS, Sun System and eWorkers.</li>
+          <li>Maintained information systems availability and institutional readiness.</li>
+          <li>Suggested and implemented new mobile products and protocols.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">Application Developer</div>
+            <div class="exp-company">Dotcom Zambia</div>
+          </div>
+          <span class="exp-period">2021 — 2022</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Delivered projects including Etoll Client, Elevy System, Malawi Boat Tour, and Lusaka Multi-Facility Zone e-toll system.</li>
+          <li>Developed APIs for mobile and web application functionality.</li>
+          <li>Wrote unit and UI tests; communicated with users to understand requirements.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">Assistant Administrator</div>
+            <div class="exp-company">Tigule Zambia (Neonovatechnologies)</div>
+          </div>
+          <span class="exp-period">2021</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>ICT specialist managing web systems and infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">Web Assistant Developer → Assistant Developer</div>
+            <div class="exp-company">Neonovatechnologies / Tigule Zambia</div>
+          </div>
+          <span class="exp-period">2018</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Server maintenance, network configuration, website creation and management.</li>
+          <li>Development and management of web systems.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">Assistant ICT Officer</div>
+            <div class="exp-company">DCS (Digital Control System) Holdings</div>
+          </div>
+          <span class="exp-period">2017</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Server configuration, building, and maintenance.</li>
+          <li>Security camera and network configuration.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">ICT Assistant</div>
+            <div class="exp-company">COMESA — Common Market for Eastern and Southern Africa</div>
+          </div>
+          <span class="exp-period">2016</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Maintained COMESA electronic equipment and network connectivity.</li>
+          <li>ICT support across all departments.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Education</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-list">
+      <div class="edu-row">
+        <span class="edu-year">2018</span>
+        <div>
+          <div class="edu-degree">Bachelor of Computer Science</div>
+          <div class="edu-inst">Mulungushi University</div>
+        </div>
+      </div>
+      <div class="edu-row">
+        <span class="edu-year">2012</span>
+        <div>
+          <div class="edu-degree">Grade 12 Certificate</div>
+          <div class="edu-inst">Kafue Boys' Secondary School, Kafue, Lusaka Province</div>
+        </div>
+      </div>
+      <div class="edu-row">
+        <span class="edu-year">2009</span>
+        <div>
+          <div class="edu-degree">Junior Secondary Certificate</div>
+          <div class="edu-inst">Kafue Boys' Secondary School, Kafue, Lusaka</div>
+        </div>
+      </div>
+      <div class="edu-row">
+        <span class="edu-year">2007</span>
+        <div>
+          <div class="edu-degree">Full Grade Seven</div>
+          <div class="edu-inst">Nkumbu Primary School, Lusaka</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Technical Skills</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span><span class="skill-tag">Python</span>
+          <span class="skill-tag">Kotlin</span><span class="skill-tag">C#</span>
+          <span class="skill-tag">C++</span><span class="skill-tag">PHP</span>
+          <span class="skill-tag">JavaScript</span><span class="skill-tag">VB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Web</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Vaadin</span><span class="skill-tag">Node.js</span>
+          <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
+          <span class="skill-tag">Ajax</span><span class="skill-tag">Bootstrap</span>
+          <span class="skill-tag">WordPress</span><span class="skill-tag">ScriptCase</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Databases</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Oracle</span><span class="skill-tag">MySQL</span>
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MSSQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Design &amp; Media</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Adobe XD</span><span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">Illustrator</span><span class="skill-tag">Premiere</span>
+          <span class="skill-tag">After Effects</span><span class="skill-tag">Lightroom</span>
+          <span class="skill-tag">Blender</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Server Config</span><span class="skill-tag">Networking</span>
+          <span class="skill-tag">Security</span><span class="skill-tag">Backups</span>
+          <span class="skill-tag">Replication</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Office &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MS Word</span><span class="skill-tag">Excel</span>
+          <span class="skill-tag">MS Project</span><span class="skill-tag">SPSS</span>
+          <span class="skill-tag">Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Software Projects</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-year">2022</div>
+        <div class="project-name">WCFCB Main Website</div>
+        <div class="project-desc">Public-facing corporate website providing core business information to the public.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2022</div>
+        <div class="project-name">WCFCB Intranet System</div>
+        <div class="project-desc">Central repository for company policies, benefits, updates and internal data access.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2022</div>
+        <div class="project-name">eWorkers Mobile App v2</div>
+        <div class="project-desc">Live branch location, improved UI for the workers' online services platform.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2021</div>
+        <div class="project-name">Capital FM 997 App</div>
+        <div class="project-desc">Live radio streaming and content sharing — web &amp; Android. capitalfm997.com</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2021</div>
+        <div class="project-name">Makaan Real Estate</div>
+        <div class="project-desc">Property listing, registration, database management and report records system. makaanreal.com</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2021</div>
+        <div class="project-name">Morevalue Properties</div>
+        <div class="project-desc">Real estate management — property database, listings and reports. morevalueproperties.com</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2021</div>
+        <div class="project-name">Haven Realtors</div>
+        <div class="project-desc">Real estate management platform with property database and reporting. havenrealtors.net</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2020</div>
+        <div class="project-name">Mulungushi University App</div>
+        <div class="project-desc">Android student app — online system access, social media presence &amp; campus geo-guide. Published on Amazon.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2020</div>
+        <div class="project-name">Seniors Golfers Society</div>
+        <div class="project-desc">Online golf score calculator, member management and records for all Zambian golf courses.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2019</div>
+        <div class="project-name">Zumwatrust School System</div>
+        <div class="project-desc">Online school accounting system with student registration functionality.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2018</div>
+        <div class="project-name">RTSA Licensing System</div>
+        <div class="project-desc">Mobile + desktop system for driver licence registration, exam writing, location-based stations and RTSA rules.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-year">2018</div>
+        <div class="project-name">Auto World Online</div>
+        <div class="project-desc">E-commerce platform for spare parts with customer feedback and inventory management.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership" class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Leadership &amp; Languages</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="two-col">
+      <div class="list-block">
+        <div class="list-block-title">Leadership</div>
+        <ul>
+          <li>Class Monitor — Nkumbu Primary School (2003–2007)</li>
+          <li>Prefect — Kafue Boys' Secondary School (2008–2012)</li>
+          <li>Class Representative, Computer Science — Mulungushi University (2014–2018)</li>
+        </ul>
+      </div>
+      <div class="list-block">
+        <div class="list-block-title">Languages Spoken</div>
+        <ul>
+          <li>English</li>
+          <li>Nyanja</li>
+          <li>Bemba</li>
+        </ul>
+        <div class="list-block-title" style="margin-top:14px;">Hobbies</div>
+        <ul>
+          <li>Researching &amp; Learning New Tech</li>
+          <li>Dancing, Music, Cooking, Baking</li>
+          <li>Meeting People &amp; Taking Walks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section id="references" class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">References</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="ref-grid">
+      <div class="ref-card">
+        <div class="ref-name">Mr. Lusungu Chihana</div>
+        <div class="ref-role">Manager Innovation System</div>
+        <div class="ref-org">Workers' Compensation Fund Control Board, Zambia</div>
+        <div class="ref-tel">+260 977 113 530</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Mr. Dev Haman</div>
+        <div class="ref-role">Deputy Secretary General</div>
+        <div class="ref-org">COMESA — Common Market for Eastern and Southern Africa, Lusaka</div>
+        <div class="ref-tel">+260 967 989 877</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Mr. Mulenga</div>
+        <div class="ref-role">Managing Director</div>
+        <div class="ref-org">DCS Digital Control System, Lusaka</div>
+        <div class="ref-tel">+260 977 872 982</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Active nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.style.color = '');
+      const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if (active) {
+        active.style.color = 'var(--accent)';
+        active.
